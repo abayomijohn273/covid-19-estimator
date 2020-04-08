@@ -1,6 +1,7 @@
 const covid19ImpactEstimator = (data) => {
   const dollarsIncome = data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * 30;
   const bed = data.totalHospitalBeds;
+  const div = (2 / 100);
   //   step 1 for impact computation
   const impact = {
     currentlyInfected: data.reportedCases * 10
@@ -40,7 +41,7 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.casesForICUByRequestedTime = severeImpact.infectionsByRequestedTime * (5 / 100);
 
   //    step 6 for severeImpact computation
-  severeImpact.casesForVentilatorsByRequestedTime = severeImpact.infectionsByRequestedTime * 2 / 100;
+  severeImpact.casesForVentilatorsByRequestedTime = severeImpact.infectionsByRequestedTime * div;
 
   //    step 7 for severeImpact computation
   severeImpact.dollarsInFlight = severeImpact.infectionsByRequestedTime * dollarsIncome;
