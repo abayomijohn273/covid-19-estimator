@@ -1,7 +1,4 @@
-// const covid19ImpactEstimator = (data) => data;
-
 const covid19ImpactEstimator = (data) => {
-
   //   step 1 for impact computation
   const impact = {
     currentlyInfected: data.reportedCases * 10
@@ -15,8 +12,14 @@ const covid19ImpactEstimator = (data) => {
   // step 4 for impact computation
   impact.hospitalBedsByRequestedTime = data.totalHospitalBeds * impact.severeCasesByRequestedTime;
 
-  // step 5 for impact computation
-//   impact.hospitalBedsByRequestedTime = data.totalHospitalBeds * impact.severeCasesByRequestedTime;
+  //step 5 for impact computation
+  impact.casesForICUByRequestedTime = impact.infectionsByRequestedTime * (5/100);
+
+  //step 6 for impact computation
+  impact.casesForVentilatorsByRequestedTime = impact.infectionsByRequestedTime * (2/100);
+
+  //step 7 for impact computation
+  impact.dollarsInFlight = impact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * 30;
 
   // step 1 for severeImpact computation
   const severeImpact = {
@@ -30,6 +33,15 @@ const covid19ImpactEstimator = (data) => {
 
   // step 4 for severeImpact computation
   severeImpact.hospitalBedsByRequestedTime = data.totalHospitalBeds * severeImpact.severeCasesByRequestedTime;
+
+  //step 5 for severeImpact computation
+  severeImpact.casesForICUByRequestedTime = severeImpact.infectionsByRequestedTime * (5/100);
+
+  //step 6 for severeImpact computation
+  severeImpact.casesForVentilatorsByRequestedTime = severeImpact.infectionsByRequestedTime * (2/100);
+
+  //step 7 for severeImpact computation
+  severeImpact.dollarsInFlight = severeImpact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * 30;
 
   return { data, impact, severeImpact };
 };
