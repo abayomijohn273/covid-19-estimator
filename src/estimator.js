@@ -4,14 +4,14 @@ const covid19ImpactEstimator = data => {
   const input = data;
 
   //   step 1 for impact computation
-  let impact = {
+  const impact = {
     currentlyInfected: input.reportedCases * 10
   };
   // step 2  for impact computation
   impact.infectionsByRequestedTime = impact.currentlyInfected * 512;
 
   // step 1 for severeImpact computation
-  let severeImpact = {
+  const severeImpact = {
     currentlyInfected: input.reportedCases * 50
   };
   // step 2  for severeImpact computation
