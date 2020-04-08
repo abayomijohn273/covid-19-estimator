@@ -1,4 +1,5 @@
 const covid19ImpactEstimator = (data) => {
+  const requestTime = (Math.pow(2,Math.floor(data.timeToElapse/3)));
   const dollarsIncome = data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * 30;
   const bed = data.totalHospitalBeds;
   const div = (2 / 100);
@@ -7,7 +8,7 @@ const covid19ImpactEstimator = (data) => {
     currentlyInfected: data.reportedCases * 10
   };
   //    step 2  for impact computation
-  impact.infectionsByRequestedTime = impact.currentlyInfected * 512;
+  impact.infectionsByRequestedTime = impact.currentlyInfected * requestTime;
 
   //   step 3 for impact computation
   impact.severeCasesByRequestedTime = impact.infectionsByRequestedTime * (15 / 100);
@@ -29,7 +30,7 @@ const covid19ImpactEstimator = (data) => {
     currentlyInfected: data.reportedCases * 50
   };
   //    step 2  for severeImpact computation
-  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 512;
+  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * requestTime;
 
   //   step 3 for severeImpact computation
   severeImpact.severeCasesByRequestedTime = severeImpact.infectionsByRequestedTime * (15 / 100);
