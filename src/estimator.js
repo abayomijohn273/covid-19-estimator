@@ -1,5 +1,17 @@
+// impact input data for day, week and month
+const  impactInfectionsByRequestedTime = (period, time) => {
+    if(period == "days"){
+        return (2 ** Math.floor(time / 3));
+    } else if(period == "weeks"){
+        return (2 ** Math.floor((time * 7) / 3));
+    }else if(period == "months"){
+        return (2 ** Math.floor((time * 30) / 3));
+    }
+}
+
 const covid19ImpactEstimator = (data) => {
-  const requestTime = 2 ** Math.floor(data.timeToElapse / 3);
+//   const requestTime = 2 ** Math.floor(data.timeToElapse / 3);
+  const requestTime = impactInfectionsByRequestedTime(data.periodType, data.timeToElapse);
   const dollarsIncome = data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD * 30;
   const bed = data.totalHospitalBeds;
   const div = (2 / 100);
