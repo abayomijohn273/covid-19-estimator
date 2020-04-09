@@ -1,7 +1,7 @@
 // impact input data for day, week and month
 const impactInfectionsByRequestedTime = (period, time) => {
   if (period === 'days') {
-    return (2 ** Math.floor(time / 3));
+    return (2 ** Math.trunc(time / 3));
   }
   if (period === 'weeks') {
     return (2 ** Math.floor((time * 7) / 3));
