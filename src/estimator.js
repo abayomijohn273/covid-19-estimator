@@ -10,7 +10,7 @@ const impactInfectionsByRequestedTime = (period, time) => {
     return (2 ** Math.floor((time * 30) / 3));
   }
   return 0;
-}
+};
 
 const covid19ImpactEstimator = (data) => {
 //   const requestTime = 2 ** Math.floor(data.timeToElapse / 3);
