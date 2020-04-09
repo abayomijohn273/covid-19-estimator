@@ -1,12 +1,15 @@
 // impact input data for day, week and month
-const  impactInfectionsByRequestedTime = (period, time) => {
-    if(period == "days"){
-        return (2 ** Math.floor(time / 3));
-    } else if(period == "weeks"){
-        return (2 ** Math.floor((time * 7) / 3));
-    }else if(period == "months"){
-        return (2 ** Math.floor((time * 30) / 3));
-    }
+const impactInfectionsByRequestedTime = (period, time) => {
+  if (period === 'days') {
+    return (2 ** Math.floor(time / 3));
+  }
+  if (period === 'weeks') {
+    return (2 ** Math.floor((time * 7) / 3));
+  }
+  if (period === 'months') {
+    return (2 ** Math.floor((time * 30) / 3));
+  }
+  return 0;
 }
 
 const covid19ImpactEstimator = (data) => {
