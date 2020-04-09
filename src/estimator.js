@@ -4,10 +4,10 @@ const impactInfectionsByRequestedTime = (period, time) => {
     return (2 ** Math.trunc(time / 3));
   }
   if (period === 'weeks') {
-    return (2 ** Math.floor((time * 7) / 3));
+    return (2 ** Math.trunc((time * 7) / 3));
   }
   if (period === 'months') {
-    return (2 ** Math.floor((time * 30) / 3));
+    return (2 ** Math.trunc((time * 30) / 3));
   }
   return 0;
 };
