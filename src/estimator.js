@@ -15,7 +15,7 @@ const impactInfectionsByRequestedTime = (period, time) => {
 const covid19ImpactEstimator = (data) => {
 //   const requestTime = 2 ** Math.floor(data.timeToElapse / 3);
   const requestTime = impactInfectionsByRequestedTime(data.periodType, data.timeToElapse);
-  // const dollarsIncome = data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD;
+  const dollarsIncome = data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD;
   const totalBed = data.totalHospitalBeds * (35 / 100);
   //   step 1 for impact computation
   const impact = {
@@ -40,7 +40,7 @@ const covid19ImpactEstimator = (data) => {
   impact.casesForVentilatorsByRequestedTime = infectionImpactTime;
 
   //    step 7 for impact computation
-  impact.dollarsInFlight = Math.trunc((impact.infectionsByRequestedTime * 0.65 * 1.5) / 30);
+  impact.dollarsInFlight = Math.trunc((impact.infectionsByRequestedTime * dollarsIncome) / 30);
 
   //    step 1 for severeImpact computation
   const severeImpact = {
@@ -68,7 +68,7 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.casesForVentilatorsByRequestedTime = infectionImpact;
 
   //    step 7 for severeImpact computation
-  const inFlight = Math.trunc((severeImpact.infectionsByRequestedTime * 0.65) / 30);
+  const inFlight = Math.trunc((severeImpact.infectionsByRequestedTime * dollarsIncome) / 30);
   severeImpact.dollarsInFlight = inFlight;
 
   return { data, impact, severeImpact };
