@@ -16,7 +16,7 @@ const covid19ImpactEstimator = (data) => {
 //   const requestTime = 2 ** Math.floor(data.timeToElapse / 3);
   const requestTime = impactInfectionsByRequestedTime(data.periodType, data.timeToElapse);
   // const avgIncome = (data.region.avgDailyIncomePopulation * (65 / 100));
-  const dollarsIncome = 0.65 * 1.5;
+  const dollarsIncome = data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD;
   const totalBed = data.totalHospitalBeds * (35 / 100);
   //   step 1 for impact computation
   const impact = {
