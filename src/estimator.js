@@ -15,7 +15,7 @@ const impactInfectionsByRequestedTime = (period, time) => {
 const covid19ImpactEstimator = (data) => {
 //   const requestTime = 2 ** Math.floor(data.timeToElapse / 3);
   const requestTime = impactInfectionsByRequestedTime(data.periodType, data.timeToElapse);
-  const totalBed = Math.ceil(data.totalHospitalBeds * (35 / 100));
+  const totalBed = Math.trunc(data.totalHospitalBeds * (35 / 100));
   //   step 1 for impact computation
   const impact = {
     currentlyInfected: data.reportedCases * 10
