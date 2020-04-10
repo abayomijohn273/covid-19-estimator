@@ -61,7 +61,7 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.casesForICUByRequestedTime = icuTime;
 
   //    step 6 for severeImpact computation
-  const infectionImpact = Math.trunc(
+  const infectionImpact = Math.floor(
     severeImpact.infectionsByRequestedTime * (2 / 100)
   );
   severeImpact.casesForVentilatorsByRequestedTime = infectionImpact;
