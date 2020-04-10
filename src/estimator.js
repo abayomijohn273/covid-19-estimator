@@ -26,13 +26,13 @@ const covid19ImpactEstimator = (data) => {
   impact.infectionsByRequestedTime = impact.currentlyInfected * requestTime;
 
   //   step 3 for impact computation
-  impact.severeCasesByRequestedTime = impact.infectionsByRequestedTime * (15 / 100);
+  impact.severeCasesByRequestedTime = Math.trunc(impact.infectionsByRequestedTime * (15 / 100));
 
   //    step 4 for impact computation
   impact.hospitalBedsByRequestedTime = totalBed - impact.severeCasesByRequestedTime;
 
   //    step 5 for impact computation
-  impact.casesForICUByRequestedTime = impact.infectionsByRequestedTime * (5 / 100);
+  impact.casesForICUByRequestedTime = Math.trunc(impact.infectionsByRequestedTime * (5 / 100));
 
   //    step 6 for impact computation
   const infectionImpactTime = Math.trunc(
@@ -51,13 +51,15 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * requestTime;
 
   //   step 3 for severeImpact computation
-  severeImpact.severeCasesByRequestedTime = severeImpact.infectionsByRequestedTime * (15 / 100);
+  const severeCaseTime = Math.trunc(severeImpact.infectionsByRequestedTime * (15 / 100));
+  severeImpact.severeCasesByRequestedTime = severeCaseTime;
 
   //    step 4 for severeImpact computation
   severeImpact.hospitalBedsByRequestedTime = totalBed - severeImpact.severeCasesByRequestedTime;
 
   //    step 5 for severeImpact computation
-  severeImpact.casesForICUByRequestedTime = severeImpact.infectionsByRequestedTime * (5 / 100);
+  const icuTime = Math.trunc(severeImpact.infectionsByRequestedTime * (5 / 100));
+  severeImpact.casesForICUByRequestedTime = icuTime;
 
   //    step 6 for severeImpact computation
   const infectionImpact = Math.trunc(
