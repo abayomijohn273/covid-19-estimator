@@ -12,7 +12,7 @@ const impactInfectionsByRequestedTime = (period, time) => {
   return 0;
 };
 
-const handleDollarInFlight = (period,time, data) => {
+const handleDollarInFlight = (period, time, data) => {
   if (period === 'days') {
     return Math.trunc(data / time);
   }
