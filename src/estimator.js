@@ -17,10 +17,10 @@ const handleDollarInFlight = (period,time, data) => {
     return Math.trunc(data / time);
   }
   if (period === 'weeks') {
-    return Math.trunc(data / (time/7));
+    return Math.trunc(data / (time / 7));
   }
   if (period === 'months') {
-    return Math.trunc(data / (time/30));
+    return Math.trunc(data / (time / 30));
   }
   return 0;
 };
