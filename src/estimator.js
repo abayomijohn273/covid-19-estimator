@@ -14,7 +14,7 @@ const impactInfectionsByRequestedTime = (period, time) => {
 
 const handleDollarInFlight = (period, data) => {
   if (period === 'days') {
-    return Math.trunc(data / 30));
+    return Math.trunc(data / 30);
   }
   if (period === 'weeks') {
     return Math.trunc(data / 7);
